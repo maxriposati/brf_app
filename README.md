@@ -17,8 +17,8 @@ Tutor: Juan Carlos Manotas Castillo - jmanotasc@uninorte.edu.co
   </ul>
 
 <hr>
-## RETO 641-41-9
-  <H3>Plataforma de Gestión de Empleados</H3>
+<H2>RETO 641-41-9</H2>
+<H3>Plataforma de Gestión de Empleados</H3>
 <p>
 BRF S.A. requiere un sistema para la gestión de sus empleados en el cual se pueda visualizar los datos de los mismos.
 Los datos que se tienen de los empleados además de sus datos personales son, fecha de ingreso, tipo de contrato, fecha de término de contrato, cargo, dependencia en la que labora y salario devengado.<br>
