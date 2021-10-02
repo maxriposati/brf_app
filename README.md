@@ -18,12 +18,12 @@ Tutor: Juan Carlos Manotas Castillo - jmanotasc@uninorte.edu.co
   
 ## Avance del Proyecto
 
-+ Sprint 1
-   Para el [Primer Sprint](1_Sprint-Entregables) se entregaran Las Historias de Usuario y el diagrama de Clases 
-+ Sprint 2
-   En este [Segundo Sprint](2_Sprint-Entregables) se presentan Los Mockups, los Pantallazos en HTML y el CSS del proyecto
-+ Sprint 3
-   TBD
+* Sprint 1 (sep 2021)
+   + Para el [Primer Sprint](1_Sprint-Entregables) se entregaran Las Historias de Usuario y el diagrama de Clases 
+* Sprint 2 (oct 2021)
+   + En este [Segundo Sprint](2_Sprint-Entregables) se presentan Los Mockups, los Pantallazos en HTML y el CSS del proyecto
+* Sprint 3
+   + TBD
     
 
 <p align="right"><img src="images/tooplate_logo_cyan.png"> </p>
