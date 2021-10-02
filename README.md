@@ -16,14 +16,14 @@ Tutor: Juan Carlos Manotas Castillo - jmanotasc@uninorte.edu.co
     <li type="circle">Camilo Ernesto Vazquez (Development Team).</li>
   </ul>
   
-<h2>Avance del Proyecto</h2> 
- [here](https://teamtreehouse.com/community/how-to-delete-a-variable-in-python)
-<h4>Sprint 1</h4>
-    <p>Para el [primer Sprint](1 Sprint - Entregables) se entregaran Las Historias de Usuario y el diagrama de Clases</p> 
-<h4>Sprint 2</h4>
-    <p>En este [Segundo Sprint](2 Sprint - Entregables) se presentan Los Mockups, los Pantallazos en HTML y el CSS del proyecto</p>
-<h4>Sprint 3</h4>
-    <p>TBD</p>
+## Avance del Proyecto
+
+### Sprint 1
+    Para el [primer Sprint](1 Sprint - Entregables) se entregaran Las Historias de Usuario y el diagrama de Clases 
+### Sprint 2
+    En este [Segundo Sprint](2 Sprint - Entregables) se presentan Los Mockups, los Pantallazos en HTML y el CSS del proyecto
+### Sprint 3
+    TBD
 
 <p align="right"><img src="images/tooplate_logo_cyan.png"> </p>
 <H2>RETO 641-41-9</H2>
