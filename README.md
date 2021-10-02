@@ -17,10 +17,11 @@ Tutor: Juan Carlos Manotas Castillo - jmanotasc@uninorte.edu.co
   </ul>
   
 <h2>Avance del Proyecto</h2> 
+ [here](https://teamtreehouse.com/community/how-to-delete-a-variable-in-python)
 <h4>Sprint 1</h4>
-    <p>Para el primer Sprint se entregaran Las Historias de Usuario y el diagrama de Clases</p>
+    <p>Para el [primer Sprint](1 Sprint - Entregables) se entregaran Las Historias de Usuario y el diagrama de Clases</p> 
 <h4>Sprint 2</h4>
-    <p>En este Segundo Sprint se presentan Los Mockups, los Pantallazos en HTML y el CSS del proyecto</p>
+    <p>En este [Segundo Sprint](2 Sprint - Entregables) se presentan Los Mockups, los Pantallazos en HTML y el CSS del proyecto</p>
 <h4>Sprint 3</h4>
     <p>TBD</p>
 
