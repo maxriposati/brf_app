@@ -1,0 +1,213 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title> BRF S.A. Crear Usuario</title> 
+<meta name="keywords" content="" />
+<meta name="description" content="" />
+<!--
+MisionTic2022
+Universidad del Norte Barranquilla
+
+Grupo 43 - Equipo 9
+--> 
+<link href="css/tooplate_style.css" rel="stylesheet" type="text/css" />
+
+</head>
+<body> 
+
+<div id="tooplate_header_wrapper">
+
+    <div id="tooplate_header">
+    
+      <div id="site_title">
+        
+        <h1><a href="#"><img src="images/tooplate_logo.png" alt="business template" /><span>BRF S.A. Soluciones Empresariales</span></span></span></a></h1>
+      
+      </div> <!-- end of site_title -->
+      
+      <div class="button float_r" id="header_button">
+          <a href="index.html">Logout</a>
+      </div>
+      
+      <div class="cleaner_h10"></div>
+      
+      <div id="tooplate_menu">
+          
+      
+      </div> <!-- end of tooplate_menu -->
+        
+    </div>	  
+</div> <!-- end of header_wrapper -->
+
+<div id="tooplate_middle_wrapper3">
+	<div id="tooplate_middle_wrapper4">
+		<div id="tooplate_middle1">
+
+			<h1>Crear Usuarios</h1>
+		</div>
+	</div>
+</div>
+
+
+<div id="tooplate_main">
+  
+  <form action="" name="formUsuario" >
+    <div id="tooplate_content1">
+      <div class="col_w380 float_l">
+        <div id="personaldata">
+          <h3>Datos Personales</h3>
+          <p>
+              <label for="documento">Cedula: </label>
+              <input type="text" id="documento" name="documento">
+          </p>
+          <p>
+              <label for="nombre">Nombre: </label>
+              <input type="text" id="nombre" name="nombre">
+          </p>
+          <p>
+              <label for="apellidos">Apellidos: </label>
+              <input type="text" id="apellidos" name="apellidos">
+          </p>
+          <p>
+              <label for="genero">Genero: </label>
+              <input type="radio" id="tipo_genero" name="tipo_genero" value="Masculino">
+              <label for="hombre">M</label>
+              <input type="radio" id="tipo_genero" name="tipo_genero" value="Femenino">
+              <label for="mujer">F</label>
+          </p>
+          <p>
+              <label for="fechaNacimiento">Fecha Nacimiento: </label>
+              <input type="date" id="fechaNacimiento" name="fechaNacimiento">
+          </p>
+          <p>
+              <label for="ciudadNacimiento">Ciudad de Nacimiento: </label>
+              <select id="ciudadNacimiento">
+                  <option value="Sincelejo">Sincelejo</option>
+                  <option value="opcion 2">option 2</option>
+                  <option value="opcion 3">option 3</option>
+                  <option value="opcion 4">option 4</option>
+                  <option value="opcion 5" >option 5</option>
+                  </select>
+          </p>
+        </div>
+        <div class="acceso">
+        <h3>Acceso</h3>
+        <p>
+            <label for="user">Usuario: </label>
+            <input type="text" id="user" name="user">
+        </p>
+        <p>
+            <label for="pass">Contraseña: </label>
+            <input type="password" id="pass" name="pass">
+        </p>
+        <p>
+            <label for="rol">Rol: </label>
+            <select id="rol">
+                <option value="usuario">Usuario</option>
+                <option value="administrador">Administrador</option>
+                <option value="SuperAdministrador">Super Administrador</option>
+                </select>
+        </p>
+        </div>
+        <div class="contacto">
+      <h3>Datos de Contacto</h3>
+      <p>
+          <label for="telefono">Telefono: </label>
+          <input type="text" id="telefono" name="telefono">
+      </p>
+      <p>
+          <label for="direccion">Dirección: </label>
+          <input type="text" id="direccion" name="direccion">
+      </p>
+      <p>
+          <label for="ciudadResidencia">Ciudad de Residencia: </label>
+          <input type="text" id="ciudadResidencia" name="ciudadResidencia">
+      </p>
+      <p>
+          <label for="email">E-mail: </label>
+          <input type="email" id="email" name="email">
+      </p>
+        </div> 
+      </div>
+        
+      <div class="col_w430 float_r">
+        <div class="contrato">
+          <h3>Datos de Contrato</h3>
+          <p>
+              <label for="tipoContrato">Tipo de Contrato: </label>
+              <select id="tipoContrato">
+                  <option value="ops">OPS</option>
+                  <option value="planta">Planta</option>
+                  <option value="supernumerario">Super Numerario</option>
+              </select>
+          </p>
+          <p>
+              <label for="cargo">Cargo: </label>
+              <select id="cargo">
+                  <option value="opcion1">opcion 1</option>
+                  <option value="opcion2">opcion 2</option>
+                  <option value="opcion3">opcion 3</option>
+              </select>
+          </p>
+          <p>
+              <label for="fechaInicio">Fecha Inicio: </label>
+              <input type="date" id="fechaInicio" name="fechaInicio">
+          </p>
+          <p>
+              <label for="fechaFinalizacion">Fecha Finalización: </label>
+              <input type="date" id="fechaFinalizacion" name="fechaFinalizacion">
+          </p>
+          <p>
+              <label for="dependencia">Dependencia: </label>
+              <select id="dependencia">
+                  <option value="opcion1">opcion 1</option>
+                  <option value="opcion2">opcion 2</option>
+                  <option value="opcion3">opcion 3</option>
+              </select>
+          </p>
+          <p>
+              <label for="salario">Salario: </label>
+              <input type="number" id="salario" name="salario">
+          </p>
+          <p>
+              <label for="estado">Estado Contrato: </label>
+              <input type="radio" id="estado" name="estado" value="activo">
+              <label for="activo">Activo</label>
+              <input type="radio" id="estado" name="estado" value="inactivo">
+              <label for="inactivo">Inactivo</label>
+          </p>
+      </div>
+        <div class="acciones">
+          <p>
+            <h3>Acciones</h3>
+            <div class="button">
+              <a href="#">Guardar</a>
+            </div>
+            <div class="button">
+              <a href="mainadmin.html">Regresar</a>
+            </div>
+          </p> 
+        </div>
+      </div>
+    </div>
+  </form>      
+		<div class="cleaner"></div>
+</div>
+
+    <div class="cleaner"></div>  
+
+<div id="tooplate_footer_wrapper">
+
+     <div id="tooplate_footer">
+    
+      Copyright © 2021 <a href="#">BRF S.A. Soluciones Empresariales</a> - Design: <a href="https://creativedk.com/">Creative DK</a>
+    
+    
+    </div> <!-- end of tooplate_footer -->
+
+</div> 
+    
+</body>
+</html>
