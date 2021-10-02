@@ -1,5 +1,4 @@
-# equipo9
-<p align="right"><img src="images/ball_nine.jpg"> </p>
+<img src="images/ball_nine_xs.jpg"><h1>Equipo 9</h1>
 
 ## MISIONTIC 2022 - UNIVERSIDAD DEL NORTE
 
