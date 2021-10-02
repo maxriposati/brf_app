@@ -24,7 +24,7 @@ Tutor: Juan Carlos Manotas Castillo - jmanotasc@uninorte.edu.co
 <h4>Sprint 3</h4>
     <p>TBD</p>
 
-<p align="right" img src="images/![tooplate_logo_cyan](https://user-images.githubusercontent.com/38966126/135730983-14864698-71c3-4a2a-acda-102fd434b752.png)
+<p align="right"><img src="images/![tooplate_logo_cyan](https://user-images.githubusercontent.com/38966126/135730983-14864698-71c3-4a2a-acda-102fd434b752.png)
 "> </p>
 <H2>RETO 641-41-9</H2>
 <H3>Plataforma de Gestión de Empleados</H3>
