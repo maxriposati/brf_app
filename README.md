@@ -15,6 +15,14 @@ Tutor: Juan Carlos Manotas Castillo - jmanotasc@uninorte.edu.co
     <li type="circle">Hector Fabian Pulido (Development Team).</li>
     <li type="circle">Camilo Ernesto Vazquez (Development Team).</li>
   </ul>
+  
+<h2>Avance del Proyecto</h2> 
+<h4>Sprint 1</h4>
+    <p>Para el primer Sprint se entregaran Las Historias de Usuario y el diagrama de Clases</p>
+<h4>Sprint 2</h4>
+    <p>En este Segundo Sprint se presentan Los Mockups, los Pantallazos en HTML y el CSS del proyecto</p>
+<h4>Sprint 3</h4>
+    <p>TBD</p>
 
 <hr>
 <H2>RETO 641-41-9</H2>
