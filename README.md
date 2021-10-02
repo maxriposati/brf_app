@@ -24,12 +24,9 @@ Tutor: Juan Carlos Manotas Castillo - jmanotasc@uninorte.edu.co
 <h4>Sprint 3</h4>
     <p>TBD</p>
 
-<hr>
+<p align="right" img src="images/tooplate_logo_cyan.png"> </p>
 <H2>RETO 641-41-9</H2>
 <H3>Plataforma de Gestión de Empleados</H3>
-<p align="right">
-<img src="images/tooplate_logo.png">
-</p>
 <p>
 BRF S.A. requiere un sistema para la gestión de sus empleados en el cual se pueda visualizar los datos de los mismos.
 Los datos que se tienen de los empleados además de sus datos personales son, fecha de ingreso, tipo de contrato, fecha de término de contrato, cargo, dependencia en la que labora y salario devengado.<br>
