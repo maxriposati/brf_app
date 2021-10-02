@@ -7,7 +7,7 @@ Scrum Daily -> cada 3 dias en este caso.
 
 Tutor: Juan Carlos Manotas Castillo - jmanotasc@uninorte.edu.co
 
-<H3>Integrantes del Equipo</H3>
+### Integrantes del Equipo ###
 <ul>
     <li type="circle">Franklin Villegas (Product Owner).</li>
     <li type="circle">Massimiliano Riposati (Scrum Master).</li>
@@ -18,12 +18,13 @@ Tutor: Juan Carlos Manotas Castillo - jmanotasc@uninorte.edu.co
   
 ## Avance del Proyecto
 
-### Sprint 1
++ Sprint 1
     Para el [primer Sprint](1 Sprint - Entregables) se entregaran Las Historias de Usuario y el diagrama de Clases 
-### Sprint 2
-    En este [Segundo Sprint](2 Sprint - Entregables) se presentan Los Mockups, los Pantallazos en HTML y el CSS del proyecto
-### Sprint 3
++ Sprint 2
+    En este [Segundo Sprint] se presentan Los Mockups, los Pantallazos en HTML y el CSS del proyecto
++ Sprint 3
     TBD
+    
 
 <p align="right"><img src="images/tooplate_logo_cyan.png"> </p>
 <H2>RETO 641-41-9</H2>
