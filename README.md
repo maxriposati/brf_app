@@ -1,4 +1,4 @@
-<img src="images/ball_nine_xs.jpg"><h1>Equipo 9</h1>
+<img src="static/images/ball_nine_xs.jpg"><h1>Equipo 9</h1>
 
 ## MISIONTIC 2022 - UNIVERSIDAD DEL NORTE
 
@@ -26,7 +26,7 @@ Tutor: Juan Carlos Manotas Castillo - jmanotasc@uninorte.edu.co
    + TBD
     
 
-<p align="right"><img src="images/tooplate_logo_cyan.png"> </p>
+<p align="right"><img src="static/images/tooplate_logo_cyan.png"> </p>
 <H2>RETO 641-41-9</H2>
 <H3>Plataforma de Gestión de Empleados</H3>
 <p>
