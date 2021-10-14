@@ -23,7 +23,7 @@ Tutor: Juan Carlos Manotas Castillo - jmanotasc@uninorte.edu.co
 * Sprint 2 (oct 2021)
    + En este [Segundo Sprint](2_Sprint-Entregables) se presentan Los Mockups, los Pantallazos en HTML y el CSS del proyecto
 * Sprint 3
-   + Validaciones
+   + Se agregaron las Validaciones para el Frontend
     
 
 <p align="right"><img src="static/images/tooplate_logo_cyan.png"> </p>
