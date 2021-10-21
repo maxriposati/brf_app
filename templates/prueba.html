@@ -1,0 +1,28 @@
+{% extends "pagetemplate.html" %}
+{% block contenido %}
+
+<form method="post"  action="/crear" id="formcrear" name="formcrear" onSubmit="">
+    {{ form.hidden_tag() }}
+
+    <div class="acceso">
+        <h3>Acceso</h3>
+        <p>
+          {{ form.user.label }}
+          {{ form.user()}}
+        </p>
+        <p>
+          {{ form.password.label }}
+          {{ form.password()}}
+        </p>
+        <p>
+          {{ form.rol.label }}
+          {{ form.rol()}}
+        </p>
+        <p>
+            {{ form.person.label }}
+            {{ form.person(value=id)}}
+          </p>
+          {{ form.guardar(class_="submit_btn float_l") }}
+
+</form>
+{% endblock %}

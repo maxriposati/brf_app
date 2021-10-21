@@ -1,0 +1,75 @@
+{% extends "pagetemplate.html" %}
+{% block contenido %}
+
+    <div id="tooplate_middle_wrapper1">
+        <div id="tooplate_middle_wrapper2">
+            <div id="tooplate_middle">
+
+                <h1>INFORMACIÓN<span>rápida y confiable</span></h1>
+                
+                <p>Los grandes volúmenes de información hacen esencial contar con un modelo utilice inteligencia artificial para permitir a los empleados obtener retroalimentacion de sus resultados de una manera mas rapida y eficiente.</p>
+                
+            </div>
+        </div>
+    </div>
+
+    <div id="tooplate_main">
+        
+        <div id="tooplate_content">
+        
+            <div class="services_section horizon_divider">
+                
+                    <h2>Intranet Corporativa</h2>
+                    <div class="ss_left">
+                        <img src="{{ url_for('static', filename='images/intranet.jpg') }}" alt="Intranet" />
+                    </div>
+                        
+                    <div class="ss_right">
+                        <p><em>Desde esta plataforma los empleados pueden tener acceso a su información personal asi como a su evaluación mensual según sus áreas de especialización; permite un punto de encuentro entre la información y un modo digital para distribuirla.</em></p>
+                        
+
+                        <form action="/login" id="formLogin" method="POST" name="formRegistro" onsubmit="return validar_login();">
+                            {{ form.hidden_tag() }}
+                            <p>
+                                {{ form.username.label }}<br>
+                                {{ form.username(placeholder="Ingrese Usuario")}}<br>
+                            </p>
+                    
+                            <p>
+                                {{ form.password.label }}<br>
+                                {{ form.password(placeholder="Ingresar Password")}}<br>
+                            </p>
+                    
+                            <p>
+                                {{ form.politicas()}}
+                                {{ form.politicas.label }}
+                                <a href="/politicas">Leer Políticas</a><br>
+                            </p>
+                            <p>
+                                {{ form.submit(class_="submit_btn float_l") }}
+                            </p>
+
+                        </form><br><br><br>
+                        <section class="content">
+                            {% for message in get_flashed_messages() %}
+                            <div class="flash">{{ message }}</div>
+                            {% endfor %}
+                          </section>
+                          <br>
+                        <a href="/recuperarpass">¿Olvidaste tu contraseña?</a><br>
+                        
+
+                    </div>
+                        
+                    <div class="cleaner"></div>
+        
+            </div>
+
+            
+        </div>
+        
+                <div class="cleaner"></div>
+            
+    </div>
+
+{% endblock %}
