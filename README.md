@@ -5,7 +5,8 @@
 Metodologia: Scrum (historias de Usuario)
 Scrum Daily -> cada 3 dias en este caso.
 
-Tutor: Juan Carlos Manotas Castillo - jmanotasc@uninorte.edu.co, pineresm@uninorte.edu.co
+Tutor: Juan Carlos Manotas Castillo -   jmanotasc@uninorte.edu.co, 
+       Marlon Alberto Piñeres -         pineresm@uninorte.edu.co.
 
 ### Integrantes del Equipo ###
 <ul>
