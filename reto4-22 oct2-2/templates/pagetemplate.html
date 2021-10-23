@@ -1,0 +1,102 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <title> BRF S.A. {{ titulo }}</title> 
+        <meta name="keywords" content="" />
+        <meta name="description" content="" />
+        <!--
+        MisionTic2022
+        Universidad del Norte Barranquilla
+        Grupo 43 - Equipo 9
+        --> 
+        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/tooplate_style.css') }}"  />
+        <script src="{{ url_for('static', filename='js/validaciones.js') }}"></script>
+    </head>
+    <body> 
+        <div id="tooplate_header_wrapper">
+            <div id="tooplate_header">
+                <div id="site_title">
+                    <h1><a href="#"><img src="{{ url_for('static', filename='images/tooplate_logo.png') }}" alt="business template" /><span>BRF S.A. Soluciones Empresariales</span></span></span></a></h1>
+                </div> <!-- end of site_title -->
+                
+                <div id="header_phone_no">
+                    Call Center: <span>01 8000 555 2222</span>
+                </div>
+                
+                <div class="cleaner_h10">
+
+                </div>
+                
+                <div id="tooplate_menu">
+                    
+                    <div id="home_menu"><a href="/home"></a></div>
+                        
+                    <ul>
+                        {% if titulo=="home" %}
+                        <li><a href="#" class="current">Home</a></li>
+                        <li><a href="/mision">Misión</a></li>
+                        <li><a href="/vision">Visión</a></li>
+                        <li><a href="/servicios">Servicios</a></li>
+                        <li><a href="/contacto">Contáctanos</a></li>
+                        <li><a href="/login">Login</a></li>
+                        {% elif titulo=="mision"%}
+                        <li><a href="/" >Home</a></li>
+                        <li><a href="#" class="current">Misión</a></li>
+                        <li><a href="/vision">Visión</a></li>
+                        <li><a href="/servicios">Servicios</a></li>
+                        <li><a href="/contacto">Contáctanos</a></li>
+                        <li><a href="/login">Login</a></li>
+                        {% elif titulo=="vision"%}
+                        <li><a href="/" >Home</a></li>
+                        <li><a href="/mision">Misión</a></li>
+                        <li><a href="#" class="current">Visión</a></li>
+                        <li><a href="/servicios">Servicios</a></li>
+                        <li><a href="/contacto">Contáctanos</a></li>
+                        <li><a href="/login">Login</a></li>
+                        {% elif titulo=="servicios"%}
+                        <li><a href="/" >Home</a></li>
+                        <li><a href="/mision">Misión</a></li>
+                        <li><a href="/vision" >Visión</a></li>
+                        <li><a href="#" class="current">Servicios</a></li>
+                        <li><a href="/contacto">Contáctanos</a></li>
+                        <li><a href="/login">Login</a></li>
+                        {% elif titulo=="contacto"%}
+                        <li><a href="/" >Home</a></li>
+                        <li><a href="/mision">Misión</a></li>
+                        <li><a href="/vision" >Visión</a></li>
+                        <li><a href="/servicios">Servicios</a></li>
+                        <li><a href="#" class="current">Contáctanos</a></li>
+                        <li><a href="/login">Login</a></li>
+                        {% elif titulo=="login"%}
+                        <li><a href="/" >Home</a></li>
+                        <li><a href="/mision">Misión</a></li>
+                        <li><a href="/vision">Visión</a></li>
+                        <li><a href="/servicios">Servicios</a></li>
+                        <li><a href="/contacto">Contáctanos</a></li>
+                        <li><a href="#" class="current">Login</a></li>
+                        {% else %}
+                        <li><a href="/">Home</a></li>
+                        <li><a href="/mision">Misión</a></li>
+                        <li><a href="/vision">Visión</a></li>
+                        <li><a href="/servicios">Servicios</a></li>
+                        <li><a href="/contacto">Contáctanos</a></li>
+                        <li><a href="/login">Login</a></li>
+                        {% endif %}
+                    </ul>    	
+                
+                </div> <!-- end of tooplate_menu -->
+                
+            </div>	  
+        </div> <!-- end of header_wrapper -->
+        
+        {% block contenido %}
+        {% endblock %}
+
+        <div id="tooplate_footer_wrapper">
+            <div id="tooplate_footer">
+                Copyright © 2021 <a href="#">BRF S.A. Soluciones Empresariales</a> - Design: <a href="https://creativedk.com/">Creative DK</a>
+            </div> <!-- end of tooplate_footer -->
+        </div> 
+    </body>
+</html>

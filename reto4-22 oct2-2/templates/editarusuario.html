@@ -1,0 +1,140 @@
+{% extends "apptemplate.html" %}
+{% block contenido %}
+
+  <div id="tooplate_middle_wrapper3">
+    <div id="tooplate_middle_wrapper4">
+      <div id="tooplate_middle1">
+
+        <h1>Editar Usuarios</h1>
+      </div>
+    </div>
+  </div>
+
+  <div id="tooplate_main">
+    
+    <form method="POST"  action="/mainadmin/editar/{{id}}" id="formeditarusuario" name="formeditarusuario" novalidate>
+      {{ form.hidden_tag() }}
+      <div id="tooplate_content1">
+        <div class="col_w380 float_l">
+          <div id="personaldata">
+            <h3>Datos Personales</h3>
+            <p>
+              {{ form.documento.label }}
+              {{ form.documento(value=info[1])}}
+            </p>
+            <p>
+              {{ form.nombre.label }}
+              {{ form.nombre(value=info[2])}}
+            </p>
+            <p>
+              {{ form.apellidos.label }}
+              {{ form.apellidos(value=info[3])}}
+            </p>
+            <p>
+              {% if info[4]=="M" %}
+                  <label for="genero">Genero: </label>
+                  <input type="radio" id="tipo_genero" name="tipo_genero" value="M" checked>
+                  <label for="hombre">M</label>
+                  <input type="radio" id="tipo_genero" name="tipo_genero" value="F">
+                  <label for="mujer">F</label>
+                {% else  %}
+                  <label for="genero">Genero: </label>
+                  <input type="radio" id="tipo_genero" name="tipo_genero" value="M">
+                  <label for="hombre">M</label>
+                  <input type="radio" id="tipo_genero" name="tipo_genero" value="F" checked>
+                  <label for="mujer">F</label>
+                {% endif %}
+            </p>
+            <p>
+              {{ form.fechaNacimiento.label }}
+              {{ form.fechaNacimiento(value=info[5])}}
+            </p>
+            <p>
+              {{ form.ciudadNacimiento.label }}
+              {{ form.ciudadNacimiento()}}
+            </p>
+          </div>
+
+          <div class="contacto">
+        <h3>Datos de Contacto</h3>
+        <p>
+          {{ form.telefono.label }}
+          {{ form.telefono(value=info[7])}}
+        </p>
+        <p>
+          {{ form.direccion.label }}
+          {{ form.direccion(value=info[8])}}
+        </p>
+        <p>
+          {{ form.ciudadResidencia.label }}
+          {{ form.ciudadResidencia(value=info[9])}}
+        </p>
+        <p>
+          {{ form.email.label }}
+          {{ form.email(value=info[10])}}
+        </p>
+          </div> 
+        </div>
+          
+        <div class="col_w430 float_r">
+          <div class="contrato">
+            <h3>Datos de Contrato</h3>
+            <p>
+              {{ form.tipoContrato.label }}
+              {{ form.tipoContrato()}}
+            </p>
+            <p>
+              {{ form.cargo.label }}
+              {{ form.cargo()}}
+            </p>
+            <p>
+              {{ form.fechaInicio.label }}
+              {{ form.fechaInicio(value=info[14])}}
+            </p>
+            <p>
+              {{ form.fechaFinalizacion.label }}
+              {{ form.fechaFinalizacion(value=info[15])}}
+            </p>
+            <p>
+              {{ form.dependencia.label }}
+              {{ form.dependencia()}}
+            </p>
+            <p>
+              {{ form.salario.label }}
+              {{ form.salario(value=info[18])}}
+            </p>
+            <p>
+              {% if info[19] %}
+                  <label for="estado">Estado Contrato: </label>
+                  <input type="radio" id="estado" name="estado" value="True" checked>
+                  <label for="activo">Activo</label>
+                  <input type="radio" id="estado" name="estado" value="False">
+                  <label for="inactivo">Inactivo</label>
+                {% else %}
+                  <label for="estado">Estado Contrato: </label>
+                  <input type="radio" id="estado" name="estado" value="True">
+                  <label for="activo">Activo</label>
+                  <input type="radio" id="estado" name="estado" value="False" checked>
+                  <label for="inactivo">Inactivo</label>
+                {% endif %}
+            </p>
+        </div>
+          <div class="acciones">
+            <p>
+              <h3>Acciones</h3>
+              {{ form.editar(class_="submit_btn float_l") }}
+              
+              <div class="button">
+                <a href="/mainadmin">Regresar</a>
+              </div>
+            </p> 
+          </div>
+        </div>
+      </div>
+    </form>      
+      <div class="cleaner"></div>
+  </div>
+
+  <div class="cleaner"></div>  
+
+{% endblock %}
