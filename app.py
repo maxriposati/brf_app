@@ -1,9 +1,12 @@
 from flask import Flask, render_template, request, flash, session,redirect,url_for
 from forms import FormContacto,FormLogin,FormRestablecer,FormRetroalimentacion,FormUsuario,FormUsuarioFinal,FormRecovery
-from usuarios import insertar_usuario, verificar_usuario,lista_usuarios,lista_usuarios_superadmin
+from usuarios import editar_usuario, insertar_usuario, verificar_usuario,lista_usuarios,lista_usuarios_superadmin
 from usuarios import obtener_correo,eliminar_usuario_persona,consulta_recovery,reestablecer_pass
-from personas import consultar_persona, insertar_persona, verificar_persona, insertar_persona, verificar_idPersona,eliminar_persona,consultar_persona_contrato,consultar_UsuarioFinal
-from contrato import insertar_contrato,eliminar_contrato_persona
+from personas import consultar_persona, insertar_persona, verificar_persona, insertar_persona, verificar_idPersona,eliminar_persona,consultar_persona_contrato,consultar_UsuarioFinal, editar_persona
+from contrato import insertar_contrato,eliminar_contrato_persona, editar_contrato
+from evaluacion import insertar_evaluacion, editar_evaluacion
+from evaluacion import consultar_evaluacion, evaluaciones_persona, eliminar_evaluacion
+
 import yagmail as yagmail
 import os
 from db import get_db
@@ -60,7 +63,7 @@ def recuperar():
         documento = datos[1]
 
         yag = yagmail.SMTP('brf.noreply@gmail.com', 'Uninorte43!')
-        link="/recovery/"+correo+"/"+documento
+        link="http://127.0.0.1:5000/recovery/"+correo+"/"+documento
         yag.send(to=correo, subject="Password recovery", contents= 'Use this link to change your password.' + link)
 
         return render_template('login.html', titulo="login", form=formlogin)    
@@ -148,10 +151,13 @@ def crear():
             #return render_template('crearusuario.html', titulo="crear usuario", form=formUser)            
     return render_template('crearusuario.html', titulo="crear usuario", form=formUser)
 
-@app.route('/mainadmin/editar/<int:id>')
+
+
+@app.route('/mainadmin/editar/<int:id>', methods=["GET","POST"])
 def editar(id):
     formUser = FormUsuario() 
     if request.method== 'POST':
+        
         documento = request.form['documento']
         nombre = request.form['nombre']
         apellidos = request.form['apellidos']
@@ -163,7 +169,7 @@ def editar(id):
         ciudadResidencia = request.form['ciudadResidencia']
         email = request.form['email']
 
-        #valor=editar_persona(documento,nombre,apellidos,tipo_genero,fechaNacimiento,ciudadNacimiento,telefono,direccion,ciudadResidencia,email)
+        valor=editar_persona(documento,nombre,apellidos,tipo_genero,fechaNacimiento,ciudadNacimiento,telefono,direccion,ciudadResidencia,email,id)
 
         #tabla contrato
         cargo = request.form['cargo']
@@ -174,10 +180,10 @@ def editar(id):
         salario = request.form['salario']
         estado = request.form['estado']
 
-        #valor3= editar_contrato(id,cargo,fechaInicio,fechaFinalizacion,tipoContrato,dependencia,salario,estado)
+        valor2= editar_contrato(cargo,fechaInicio,fechaFinalizacion,tipoContrato,dependencia,salario,estado,id)
             
-        #if valor==True and valor3==True:           
-        #    return redirect("/mainadmin")
+        if valor2==True and valor==True:        
+            return redirect("/mainadmin")
 
     else:
         if session["usuario"]!="unknown" and session["rol"]!=0:
@@ -188,36 +194,107 @@ def editar(id):
             formUser.cargo.default=datos[13]
             formUser.dependencia.default=datos[17]
             formUser.process()
-            return render_template('editarusuario.html', titulo="editar usuario", info=datos, form=formUser)
+            return render_template('editarusuario.html', titulo="editar usuario", id=id, info=datos, form=formUser)
         else:
             return redirect("/")
+
 
 @app.route('/mainadmin/eliminar/<int:id>')
 def eliminar(id):
     if session["usuario"]!="unknown" and session["rol"]!=0:
-        if eliminar_contrato_persona(id):
-            if eliminar_persona(id):
-                if eliminar_usuario_persona(id):
-                    return redirect("/mainadmin")   
+        evaluaciones=evaluaciones_persona(id)
+        if evaluaciones is None:
+            if eliminar_contrato_persona(id):
+                if eliminar_persona(id):
+                    if eliminar_usuario_persona(id):
+                        return redirect("/mainadmin")    
+        else:
+            if eliminar_evaluacion(id):
+                if eliminar_contrato_persona(id):
+                    if eliminar_persona(id):
+                        if eliminar_usuario_persona(id):
+                            return redirect("/mainadmin")   
     else:
         return redirect("/")
 
-@app.route('/mainadmin/evaluar/<int:id>')
-def evaluar(id):
+
+
+
+@app.route('/mainadmin/evaluar/<int:id>', methods=["GET","POST"], defaults={'anno': None, 'mes':None})
+@app.route('/mainadmin/evaluar/<int:id>/<int:anno>/<string:mes>', methods=["GET","POST"])
+def evaluar(id,anno,mes):
     formEvaluar = FormRetroalimentacion()
-    if session["usuario"]!="unknown" and session["rol"]!=0:
-        return render_template('evaluacion.html', titulo="evaluar usuario", id=id, form=formEvaluar)
-    else:
-        return redirect("/")
+    if request.method== 'POST':
+        #fecha
+        anoEvaluacion = request.form['anoEvaluacion']
+        mesEvaluacion = request.form['mesEvaluacion']
+        #retroalimentacion
+        puntaje = request.form['puntaje']
+        retroalimentacion = request.form['retroalimentacion']
+        #calificacion
+        conocimiento = request.form['conocimiento']
+        actitud = request.form['actitud']
+        habilidad = request.form['habilidad']  
 
-@app.route('/mainusuario/<int:id>')
+        evaluacion=consultar_evaluacion(anoEvaluacion,mesEvaluacion,id)
+        if evaluacion is None:
+
+            valor=insertar_evaluacion(id,anoEvaluacion,mesEvaluacion,conocimiento,actitud,habilidad, puntaje,retroalimentacion )
+            if valor==True:        
+                return redirect("/mainadmin")
+        else:
+            valor=editar_evaluacion(id,anoEvaluacion,mesEvaluacion,conocimiento,actitud,habilidad, puntaje,retroalimentacion)
+            if valor==True:        
+                return redirect("/mainadmin")
+
+    
+    else:
+        if session["usuario"]!="unknown" and session["rol"]!=0:
+            evaluacion=consultar_evaluacion(anno,mes,id)
+            if evaluacion is None:
+
+                formEvaluar.mesEvaluacion.data=mes
+                datos=consultar_persona_contrato(id)
+                return render_template('evaluacion.html', titulo="Evaluar usuario", id=id, info=datos, form=formEvaluar)
+            else:
+                formEvaluar.anoEvaluacion.default=anno
+                formEvaluar.mesEvaluacion.data=evaluacion[3]
+                formEvaluar.puntaje.data=evaluacion[7]
+                formEvaluar.retroalimentacion.data=evaluacion[8]
+                datos=consultar_persona_contrato(id)
+                return render_template('evaluacion.html', titulo="Evaluar usuario", id=id, info=datos, form=formEvaluar)
+        else:
+            return redirect("/")
+
+
+
+@app.route('/mainusuario/<int:id>', methods=["GET","POST"])
 def usuario(id):
     datos=consultar_UsuarioFinal(id)
     formFinalUser = FormUsuarioFinal()
-    if session["usuario"]!="unknown" and session["rol"]!=0:
-        return render_template('mainusuario.html', titulo="main usuario", id=id, form=formFinalUser,usuario=datos)
+    if request.method == 'POST':
+        year = request.form['anoEvaluacion']
+        month = request.form['mesEvaluacion']
+        evaluacion = consultar_evaluacion(year,month,id)
+        if evaluacion is None:
+            formFinalUser.anoEvaluacion.default=year
+            formFinalUser.mesEvaluacion.default=month
+            formFinalUser.puntaje.data=""
+            formFinalUser.retroalimentacion.data=""
+            error = "El Usuario no tiene evaluacion en el mes: "+month+" y el año: "+year
+            flash( error )
+            return render_template('mainusuario.html', titulo="main usuario", id=id, form=formFinalUser,usuario=datos,evaluacion="")
+        else:
+            formFinalUser.anoEvaluacion.default=year
+            formFinalUser.mesEvaluacion.default=month
+            formFinalUser.retroalimentacion.data=evaluacion[8]
+            return render_template('mainusuario.html', titulo="main usuario", id=id, form=formFinalUser,usuario=datos,evaluacion=evaluacion)
     else:
-        return redirect("/")
+        if session["usuario"]!="unknown" and session["rol"]!=0:
+            return render_template('mainusuario.html', titulo="main usuario", id=id, form=formFinalUser,usuario=datos,evaluacion="")
+        else:
+            return redirect("/")
+
 
 @app.route('/login', methods=["GET","POST"])
 def login():
@@ -229,7 +306,7 @@ def login():
         usuario = verificar_usuario(username,password)
         
         if usuario is None:
-            error = 'Usuario o contraseña inválidos'
+            error = "Usuario o contraseña inválidos"
             flash( error )
             return render_template('login.html', titulo="login", form=formlogin)
         else:

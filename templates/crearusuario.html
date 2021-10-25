@@ -59,7 +59,11 @@
           </p>
           <p>
             {{ form.rol.label }}
-            {{ form.rol()}}
+            {% if session['rol'] == "superAdministrador" %}
+              {{ form.rol()}}
+            {% else %}
+              <input type="text" name="rol" id="rol" value="usuario" readonly="true">
+            {% endif %}
           </p>
           </div>
           <div class="contacto">

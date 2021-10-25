@@ -21,7 +21,8 @@ contrato_op = [('      ---', '      ---'), ('Fijo', 'Fijo'), ('Indefinido', 'Ind
 cargo_op = [('      ---', '      ---'), ('Directivo', 'Directivo'), ('Jefatura', 'Jefatura'), ('Operativo', 'Operativo'), ('Asistente', 'Asistente'), ('Auxiliar', 'Auxiliar')]
 dependencia_op = [('      ---', '      ---'), ('Mercadeo', 'Mercadeo'), ('Comercial', 'Comercial'), ('Talento Humano', 'Talento Humano'), ('Producción', 'Producción'), ('Financiero', 'Financiero'), ('Almacén', 'Almacén')]
 roles = [('      ---', '      ---'), ('usuario', 'Usuario'), ('administrador', 'Administrador'), ('superAdministrador', 'Super Administrador')]
-
+months = [('      ---', '      ---'), ('Enero', 'Enero'), ('Febrero', 'Febrero'), ('Marzo', 'Marzo'), ('Abril', 'Abril'), ('Mayo', 'Mayo'),('Junio', 'Junio'),('Julio', 'Julio'),('Agosto', 'Agosto'),('Septiembre', 'Septiembre'),('Octubre', 'Octubre'), ('Noviembre', 'Noviembre'),('Diciembre', 'Diciembre')]
+years = [(2021, 2021), (2022, 2022), (2023, 2023)]
 
 class FormContacto(FlaskForm):
     author = StringField('Nombre: ', validators=[DataRequired(message='No dejar vacío,completar')])
@@ -77,7 +78,8 @@ class FormUsuario(FlaskForm):
     
 class FormRetroalimentacion(FlaskForm):
     #fecha
-    fechaEvaluacion = DateField('Fecha de Evaluación:')
+    anoEvaluacion = SelectField(u'Año:', choices=years, default="        ---")
+    mesEvaluacion = SelectField(u'Mes:', choices=months, default="        ---")
     #empleado
     documento = StringField('Cédula: ')
     nombre = StringField('Nombre: ')
@@ -116,5 +118,9 @@ class FormUsuarioFinal(FlaskForm):
     salario = StringField('Salario: ')
     estado = StringField('Estado Contrato:')
     #retroalimentacion
+    anoEvaluacion = SelectField(u'Año:', choices=years, default="        ---")
+    mesEvaluacion = SelectField(u'Mes:', choices=months, default="        ---")
     puntaje = StringField('Puntaje Final: ')
     retroalimentacion = TextAreaField('Comentarios: ')
+    
+    ver = SubmitField('  Consultar')

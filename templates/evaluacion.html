@@ -11,11 +11,14 @@
         
     <div id="tooplate_main">
         
-        <form action="" method="post" id="formevaluar" name="formevaluar"  novalidate>
+        <form action="/mainadmin/evaluar/{{id}}" method="POST" id="formevaluar" name="formevaluar"  novalidate>
             {{ form.hidden_tag() }} 
             <p>
-                {{ form.fechaEvaluacion.label(class="lblev") }}
-                {{ form.fechaEvaluacion()}}<br>
+                {{ form.anoEvaluacion.label(class="lblev") }}
+                {{ form.anoEvaluacion()}}<br>
+
+                {{ form.mesEvaluacion.label(class="lblev") }}
+                {{ form.mesEvaluacion(onChange="actualizar_evaluacion(editar.value,anoEvaluacion.value,mesEvaluacion.value)")}}<br>
                     <br><br>
             </p>
             <div id="tooplate_content1">
@@ -24,15 +27,15 @@
                                 <h3>Empleado</h3>
                                 <p>
                                     {{ form.documento.label(class="lblev") }}
-                                    {{ form.documento()}}
+                                    {{ form.documento(readonly=true, value=info[1])}}
                                 </p>
                                 <p>
                                     {{ form.nombre.label(class="lblev") }}
-                                    {{ form.nombre()}}
+                                    {{ form.nombre(readonly=true,value=info[2])}}
                                 </p>
                                 <p>
                                     {{ form.apellidos.label(class="lblev") }}
-                                    {{ form.apellidos()}}
+                                    {{ form.apellidos(readonly=true,value=info[3])}}
                                 </p>
                             </div>
 
@@ -41,9 +44,9 @@
                                 <h3>Retroalimentacion</h3>
                                 <p>
                                     {{ form.puntaje.label(class="lblev") }}
-                                    {{ form.puntaje()}}
+                                    {{ form.puntaje(readonly=true)}}
                                     <br/> <br/>
-                                    {{ form.retroalimentacion(rows="5",cols="62")}}
+                                    {{ form.retroalimentacion(rows="5",cols="55")}}
                                 </p>
                             </div>    
                         </div>    
@@ -53,7 +56,7 @@
                                 <h3>Calificacion</h3>
                                 <p>
                                     {{ form.conocimiento.label(class="lblev") }}
-                                    {{ form.conocimiento(min="1",max="5",list="lista-rango1")}}
+                                    {{ form.conocimiento(min="1",max="5",list="lista-rango1",step="1", onChange="puntaje_final()")}}
                                     <datalist id="lista-rango1">
                                         <option value="1" label="1">
                                         <option value="2" label="2">
@@ -65,7 +68,7 @@
 
                                 <p>
                                     {{ form.actitud.label(class="lblev") }}
-                                    {{ form.actitud(min="1",max="5",list="lista-rango2")}}
+                                    {{ form.actitud(min="1",max="5",list="lista-rango2",step="1", onChange="puntaje_final()")}}
                                     <datalist id="lista-rango2">
                                         <option value="1" label="1">
                                         <option value="2" label="2">
@@ -77,7 +80,7 @@
 
                                 <p>
                                     {{ form.habilidad.label(class="lblev") }}
-                                    {{ form.habilidad(min="1",max="5",list="lista-rango3")}}
+                                    {{ form.habilidad(min="1",max="5",list="lista-rango3",step="1" ,onChange="puntaje_final()")}}
                                     <datalist id="lista-rango3">
                                         <option value="1" label="1">
                                         <option value="2" label="2">
@@ -93,7 +96,7 @@
                                     {{ form.guardar(class_="submit_btn") }}
                                     <br>
                                     
-                                    {{ form.editar(class_="submit_btn") }}
+                                    {{ form.editar(class_="submit_btn",value=info[0]) }}
                                     
                                     
                                     <div class="button">
@@ -111,3 +114,4 @@
    
     <div class="cleaner"></div>  
 {% endblock %}
+

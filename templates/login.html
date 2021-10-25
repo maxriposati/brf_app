@@ -1,75 +1,87 @@
 {% extends "pagetemplate.html" %}
 {% block contenido %}
-
-    <div id="tooplate_middle_wrapper1">
-        <div id="tooplate_middle_wrapper2">
-            <div id="tooplate_middle">
-
-                <h1>INFORMACIÓN<span>rápida y confiable</span></h1>
-                
-                <p>Los grandes volúmenes de información hacen esencial contar con un modelo utilice inteligencia artificial para permitir a los empleados obtener retroalimentacion de sus resultados de una manera mas rapida y eficiente.</p>
-                
-            </div>
-        </div>
-    </div>
-
-    <div id="tooplate_main">
+<table class="table-login">
+    <tr>
+        <td>
+            <div id="tooplate_middle_wrapper1-login">
+                <div id="tooplate_middle_wrapper2-login">
+                    <div id="tooplate_middle-login">
         
-        <div id="tooplate_content">
-        
-            <div class="services_section horizon_divider">
-                
-                    <h2>Intranet Corporativa</h2>
-                    <div class="ss_left">
-                        <img src="{{ url_for('static', filename='images/intranet.jpg') }}" alt="Intranet" />
-                    </div>
+                        <h1>INFORMACIÓN<span><br><br>Rápida y confiable</span></h1>
                         
-                    <div class="ss_right">
-                        <p><em>Desde esta plataforma los empleados pueden tener acceso a su información personal asi como a su evaluación mensual según sus áreas de especialización; permite un punto de encuentro entre la información y un modo digital para distribuirla.</em></p>
+                        <p>Los grandes volúmenes de información hacen esencial contar con un modelo utilice inteligencia artificial para permitir a los empleados obtener retroalimentacion de sus resultados de una manera mas rapida y eficiente.</p>
                         
+                   </div>
+                </div>
+            </div> 
 
-                        <form action="/login" id="formLogin" method="POST" name="formRegistro" onsubmit="return validar_login();">
-                            {{ form.hidden_tag() }}
-                            <p>
-                                {{ form.username.label }}<br>
-                                {{ form.username(placeholder="Ingrese Usuario")}}<br>
-                            </p>
+        </td>
+        <td>
+            <div id="tooplate_main-login">
+        
+                <div id="tooplate_content">
+                
+                    <div class="services_section horizon_divider">
                     
-                            <p>
-                                {{ form.password.label }}<br>
-                                {{ form.password(placeholder="Ingresar Password")}}<br>
-                            </p>
-                    
-                            <p>
-                                {{ form.politicas()}}
-                                {{ form.politicas.label }}
-                                <a href="/politicas">Leer Políticas</a><br>
-                            </p>
-                            <p>
-                                {{ form.submit(class_="submit_btn float_l") }}
-                            </p>
-
-                        </form><br><br><br>
-                        <section class="content">
-                            {% for message in get_flashed_messages() %}
-                            <div class="flash">{{ message }}</div>
-                            {% endfor %}
-                          </section>
-                          <br>
-                        <a href="/recuperarpass">¿Olvidaste tu contraseña?</a><br>
-                        
-
-                    </div>
-                        
-                    <div class="cleaner"></div>
+                            <h2 id="lblintranet">Intranet Corporativa</h2>
+                            <div class="ss_left">
+                                <img src="{{ url_for('static', filename='images/intranet.jpg') }}" alt="Intranet" />
+                            </div>
+                                
+                            <div class="ss_right">
+                                <p id="leyenda-login"><em>Desde esta plataforma los empleados pueden tener acceso a su información personal asi como a su evaluación mensual según sus áreas de especialización; permite un punto de encuentro entre la información y un modo digital para distribuirla.</em></p>
+                                
         
-            </div>
-
+                                <form action="/login" id="formLogin" method="POST" name="formRegistro" onsubmit="return validar_login();">
+                                    {{ form.hidden_tag() }}
+                                    <p>
+                                        {{ form.username.label }}<br>
+                                        {{ form.username(placeholder="Ingrese Usuario")}}<br>
+                                    </p>
+                            
+                                    <p>
+                                        {{ form.password.label }}<br>
+                                        {{ form.password(placeholder="Ingresar Password")}}<br>
+                                    </p>
+                                    <section id="lblerror"class="content">
+                                        {% for message in get_flashed_messages() %}
+                                        <div class="flash">{{ message }}</div>
+                                        {% endfor %}
+                                      </section>
+                                    <p id="lblpoliticas">
+                                        {{ form.politicas()}}
+                                        {{ form.politicas.label }}
+                                        <a href="/politicas">Leer Políticas</a><br>
+                                    </p>
+        
+                                    <p>
+                                        {{ form.submit(class_="submit_btn float_l") }}
+                                    </p>
+        
+                                </form><br><br><br>
+                                
+                                <a href="/recuperarpass">¿Olvidaste tu contraseña?</a><br>
+                                
+        
+                            </div>
+                                
+                            <div class="cleaner"></div>
+                
+                    </div>
+        
+                    
+                </div>
+                
+                        <div class="cleaner"></div>
+                    
             
         </div>
-        
-                <div class="cleaner"></div>
-            
-    </div>
+
+        </td>
+    </tr>
+</table>
+    
+
+    
 
 {% endblock %}

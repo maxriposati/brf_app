@@ -1,4 +1,5 @@
 
+from logging import debug
 from db import get_db,close_db
 from sqlite3 import Error
 
@@ -107,3 +108,19 @@ def consultar_UsuarioFinal(id):
     except Error:
         close_db()
     close_db()
+
+def editar_persona(documento,nombre,apellidos,tipo_genero,fechaNacimiento,ciudadNacimiento,telefono,direccion,ciudadResidencia,email,id):
+    db=get_db()
+    try:
+        cursor = db.cursor()
+        strsql ="update persons SET document=?, name=?, surname=?, gender=?, dateBirth=?, cityBirth=?, phone=?, address=?, cityResidence=?,email=? where id=?"
+        cursor.execute(strsql,[documento,nombre,apellidos,tipo_genero,fechaNacimiento,ciudadNacimiento,telefono,direccion,ciudadResidencia,email,id])
+        db.commit()
+        valor=True
+        close_db()
+        return valor
+    except Error:
+        valor=False
+        close_db()
+    close_db()
+    return valor

@@ -12,7 +12,7 @@
 
   <div id="tooplate_main">
     
-    <form action="" name="formUsuario" >
+    <form method="post" action="/mainusuario/{{id}}" name="formUsuario" >
       {{ form.hidden_tag() }}
       <div id="tooplate_content1">
         <div class="col_w380 float_l">
@@ -106,30 +106,58 @@
                 {% endif %}
             </p>
 
-            <div id="retroalimentacion">
-              <br>                       
-              <h3>Retroalimentacion</h3>
-              <p>
-                {{ form.puntaje.label }}
-                {{ form.puntaje(readonly=true)}}
-                <br/> <br/>
-                {{ form.retroalimentacion.label }}
-                {{ form.retroalimentacion(rows="5",cols="45",readonly=true)}}
-              </p>
-        
-            </div> 
+            
 
         </div>
-          <div class="acciones">
-            <p>
-
-              <div class="button">
-                <a href="/login">Regresar</a>
-              </div>
-            </p> 
-          </div>
+        
+          
         </div>
       </div>
+      <div id=tooplate_main>
+        <div id="retroalimentacion">
+          <br>                       
+          <h3>Retroalimentación</h3>
+          <h6>Seleccione:</h6>
+          <p>{{ form.anoEvaluacion.label(class="lblev") }} {{ form.anoEvaluacion()}}</p>
+          <p>{{ form.mesEvaluacion.label(class="lblev") }} {{ form.mesEvaluacion()}}</p>
+          <p>{{ form.ver(class_="submit_btn") }} </p>
+          <p>
+            <section id="lblerror"class="content">
+              {% for message in get_flashed_messages() %}
+              <div class="flash">{{ message }}</div>
+              {% endfor %}
+            </section>
+          </p>
+          <p>
+            {% if evaluacion=="" %}
+              {{ form.puntaje.label }}
+              {{ form.puntaje(readonly=true)}}      
+              <br/> <br/>
+              {{ form.retroalimentacion.label }}
+              <br><br>
+              {{ form.retroalimentacion(rows="7",cols="112",readonly=true)}}
+            {% else %}
+              {{ form.puntaje.label }}
+              {{ form.puntaje(readonly=true,value=evaluacion[7])}}      
+              <br/> <br/>
+              {{ form.retroalimentacion.label }}
+              <br><br>
+              {{ form.retroalimentacion(rows="7",cols="112",readonly=true)}}
+            {% endif %}
+
+          </p>
+          
+          <div class="acciones">
+            <div class="button">
+              <a href="/login">Regresar</a>
+            </div>
+          </div>
+    
+        </div> 
+
+      </div>
+
+      
     </form>      
       <div class="cleaner"></div>
   </div>

@@ -31,3 +31,19 @@ def eliminar_contrato_persona(id):
         valor = False
     close_db()
     return valor
+
+def editar_contrato(cargo,fechaInicio,fechaFinalizacion,tipoContrato,dependencia,salario,estado,id):
+    db=get_db()
+    try:
+        cursor = db.cursor()
+        strsql ="update contracts SET charge=?,admissionDate=?,leaveDate=?,typeContract=?,dependence=?,salary=?,availability=? where idPerson=?"
+        cursor.execute(strsql,[cargo,fechaInicio,fechaFinalizacion,tipoContrato,dependencia,salario,estado,id])
+        db.commit()
+        valor=True
+        close_db()
+        return valor
+    except Error:
+        valor=False
+        close_db()
+    close_db()
+    return valor
