@@ -88,7 +88,7 @@ def recovery(correo,doc):
 
 @app.route('/mainadmin')
 def administrador():
-    if session["usuario"]!="unknown" and session["rol"]!=0:
+    if (session["usuario"]!="unknown" and session["rol"]!=0) or (session["usuario"]!=None and session["rol"]!=None):
         if session["rol"]=="superAdministrador":
             usuarios=lista_usuarios_superadmin()
             if usuarios is None:
@@ -142,7 +142,7 @@ def crear():
 
             valor3= insertar_contrato(idPersona[0],cargo,fechaInicio,fechaFinalizacion,tipoContrato,dependencia,salario,estado)
             
-            if valor==True and valor2==True:           
+            if valor==True and valor2==True and valor3==True:           
                 return redirect("/mainadmin")
             
         else:
@@ -186,7 +186,7 @@ def editar(id):
             return redirect("/mainadmin")
 
     else:
-        if session["usuario"]!="unknown" and session["rol"]!=0:
+        if (session["usuario"]!="unknown" and session["rol"]!=0) or (session["usuario"]!=None and session["rol"]!=None):
             datos=consultar_persona_contrato(id)
             formUser.ciudadNacimiento.default=datos[6]
             formUser.ciudadResidencia.default=datos[9]
@@ -201,7 +201,7 @@ def editar(id):
 
 @app.route('/mainadmin/eliminar/<int:id>')
 def eliminar(id):
-    if session["usuario"]!="unknown" and session["rol"]!=0:
+    if (session["usuario"]!="unknown" and session["rol"]!=0) or (session["usuario"]!=None and session["rol"]!=None):
         evaluaciones=evaluaciones_persona(id)
         if evaluaciones is None:
             if eliminar_contrato_persona(id):
@@ -216,7 +216,6 @@ def eliminar(id):
                             return redirect("/mainadmin")   
     else:
         return redirect("/")
-
 
 
 @app.route('/mainadmin/evaluar/<int:id>', methods=["GET","POST"])
@@ -240,12 +239,13 @@ def evaluar(id):
             return redirect("/mainadmin")
     
     else:
-        if session["usuario"]!="unknown" and session["rol"]!=0:
+        if (session["usuario"]!="unknown" and session["rol"]!=0) or (session["usuario"]!=None and session["rol"]!=None):
             datos=consultar_persona_contrato(id)
             return render_template('evaluacion.html', titulo="Evaluar usuario", id=id, info=datos, form=formEvaluar,x="Guardar")
         else:
             return redirect("/")
 
+       
 @app.route('/mainadmin/evaluar/<int:id>/<string:anno>/<string:mes>', methods=["GET","POST"])
 def edit_evaluar(id,anno,mes):
     formEvaluar = FormRetroalimentacion()
@@ -266,7 +266,7 @@ def edit_evaluar(id,anno,mes):
         if edicion==True:       
             return redirect("/mainadmin")
     else:
-        if session["usuario"]!="unknown" and session["rol"]!=0:
+        if (session["usuario"]!="unknown" and session["rol"]!=0) or (session["usuario"]!=None and session["rol"]!=None):
             formEvaluar.anoEvaluacion.data=anno
             formEvaluar.mesEvaluacion.data=mes
             if evaluacion is None:
@@ -275,12 +275,16 @@ def edit_evaluar(id,anno,mes):
                 datos=consultar_persona_contrato(id)
                 return render_template('evaluacion.html', titulo="Evaluar usuario", id=id, info=datos, form=formEvaluar,x="Guardar")
             else:
+                formEvaluar.conocimiento.data=evaluacion[4]
+                formEvaluar.actitud.data=evaluacion[5]
+                formEvaluar.habilidad.data=evaluacion[6]
                 formEvaluar.puntaje.data=evaluacion[7]
                 formEvaluar.retroalimentacion.data=evaluacion[8]
                 datos=consultar_persona_contrato(id)
                 return render_template('evaluacion.html', titulo="Evaluar usuario", id=id, info=datos, form=formEvaluar,x="Editar",anno=anno,mes=mes)
         else:
             return redirect("/")
+
 
 @app.route('/mainusuario/<int:id>', methods=["GET","POST"])
 def usuario(id):
@@ -304,7 +308,7 @@ def usuario(id):
             formFinalUser.retroalimentacion.data=evaluacion[8]
             return render_template('mainusuario.html', titulo="main usuario", id=id, form=formFinalUser,usuario=datos,evaluacion=evaluacion)
     else:
-        if session["usuario"]!="unknown" and session["rol"]!=0:
+        if (session["usuario"]!="unknown" and session["rol"]!=0) or (session["usuario"]!=None and session["rol"]!=None):
             return render_template('mainusuario.html', titulo="main usuario", id=id, form=formFinalUser,usuario=datos,evaluacion="")
         else:
             return redirect("/")
@@ -342,8 +346,3 @@ def logout():
   session["usuario"] = "unknown"
   session["rol"] = 0
   return redirect("/")
-
-
-    
-
-
