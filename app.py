@@ -219,13 +219,11 @@ def eliminar(id):
 
 
 
-
-@app.route('/mainadmin/evaluar/<int:id>', methods=["GET","POST"], defaults={'anno': None, 'mes':None})
-@app.route('/mainadmin/evaluar/<int:id>/<int:anno>/<string:mes>', methods=["GET","POST"])
-def evaluar(id,anno,mes):
+@app.route('/mainadmin/evaluar/<int:id>', methods=["GET","POST"])
+def evaluar(id):
     formEvaluar = FormRetroalimentacion()
     if request.method== 'POST':
-        #fecha
+           #fecha
         anoEvaluacion = request.form['anoEvaluacion']
         mesEvaluacion = request.form['mesEvaluacion']
         #retroalimentacion
@@ -236,36 +234,39 @@ def evaluar(id,anno,mes):
         actitud = request.form['actitud']
         habilidad = request.form['habilidad']  
 
-        evaluacion=consultar_evaluacion(anoEvaluacion,mesEvaluacion,id)
-        if evaluacion is None:
+        valor=insertar_evaluacion(id,anoEvaluacion,mesEvaluacion,conocimiento,actitud,habilidad, puntaje,retroalimentacion )
 
-            valor=insertar_evaluacion(id,anoEvaluacion,mesEvaluacion,conocimiento,actitud,habilidad, puntaje,retroalimentacion )
-            if valor==True:        
-                return redirect("/mainadmin")
-        else:
-            valor=editar_evaluacion(id,anoEvaluacion,mesEvaluacion,conocimiento,actitud,habilidad, puntaje,retroalimentacion)
-            if valor==True:        
-                return redirect("/mainadmin")
-
+        if valor==True:        
+            return redirect("/mainadmin")
     
     else:
         if session["usuario"]!="unknown" and session["rol"]!=0:
-            evaluacion=consultar_evaluacion(anno,mes,id)
-            if evaluacion is None:
-
-                formEvaluar.mesEvaluacion.data=mes
-                datos=consultar_persona_contrato(id)
-                return render_template('evaluacion.html', titulo="Evaluar usuario", id=id, info=datos, form=formEvaluar)
-            else:
-                formEvaluar.anoEvaluacion.default=anno
-                formEvaluar.mesEvaluacion.data=evaluacion[3]
-                formEvaluar.puntaje.data=evaluacion[7]
-                formEvaluar.retroalimentacion.data=evaluacion[8]
-                datos=consultar_persona_contrato(id)
-                return render_template('evaluacion.html', titulo="Evaluar usuario", id=id, info=datos, form=formEvaluar)
+            datos=consultar_persona_contrato(id)
+            return render_template('evaluacion.html', titulo="Evaluar usuario", id=id, info=datos, form=formEvaluar,x="Guardar")
         else:
             return redirect("/")
 
+        
+@app.route('/mainadmin/evaluar/<int:id>/<string:anno>/<string:mes>', methods=["GET"])
+def edit_evaluar(id,anno,mes):
+    formEvaluar = FormRetroalimentacion()
+    
+    if session["usuario"]!="unknown" and session["rol"]!=0:
+        formEvaluar.anoEvaluacion.data=anno
+        formEvaluar.mesEvaluacion.data=mes
+        evaluacion=consultar_evaluacion(anno,mes,id)
+        if evaluacion is None:
+            error = "El Usuario no tiene evaluacion en el mes: "+anno+" y el año: "+mes
+            flash( error )
+            datos=consultar_persona_contrato(id)
+            return render_template('evaluacion.html', titulo="Evaluar usuario", id=id, info=datos, form=formEvaluar,x="Guardar")
+        else:
+            formEvaluar.puntaje.data=evaluacion[7]
+            formEvaluar.retroalimentacion.data=evaluacion[8]
+            datos=consultar_persona_contrato(id)
+            return render_template('evaluacion.html', titulo="Evaluar usuario", id=id, info=datos, form=formEvaluar,x="Editar")
+    else:
+        return redirect("/")
 
 
 @app.route('/mainusuario/<int:id>', methods=["GET","POST"])

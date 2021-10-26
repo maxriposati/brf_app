@@ -1,5 +1,5 @@
 from flask_wtf import FlaskForm
-from wtforms import StringField, PasswordField, BooleanField, SubmitField, TextAreaField, RadioField, SelectField
+from wtforms import StringField, PasswordField, BooleanField, SubmitField, TextAreaField, RadioField, SelectField, HiddenField
 from wtforms.validators import DataRequired,Required
 from wtforms.fields.html5 import EmailField, DateField, DecimalField,IntegerRangeField
 import pandas as pd
@@ -22,7 +22,7 @@ cargo_op = [('      ---', '      ---'), ('Directivo', 'Directivo'), ('Jefatura',
 dependencia_op = [('      ---', '      ---'), ('Mercadeo', 'Mercadeo'), ('Comercial', 'Comercial'), ('Talento Humano', 'Talento Humano'), ('Producción', 'Producción'), ('Financiero', 'Financiero'), ('Almacén', 'Almacén')]
 roles = [('      ---', '      ---'), ('usuario', 'Usuario'), ('administrador', 'Administrador'), ('superAdministrador', 'Super Administrador')]
 months = [('      ---', '      ---'), ('Enero', 'Enero'), ('Febrero', 'Febrero'), ('Marzo', 'Marzo'), ('Abril', 'Abril'), ('Mayo', 'Mayo'),('Junio', 'Junio'),('Julio', 'Julio'),('Agosto', 'Agosto'),('Septiembre', 'Septiembre'),('Octubre', 'Octubre'), ('Noviembre', 'Noviembre'),('Diciembre', 'Diciembre')]
-years = [(2021, 2021), (2022, 2022), (2023, 2023)]
+years = [('      ---', '      ---'),(2021, 2021), (2022, 2022), (2023, 2023)]
 
 class FormContacto(FlaskForm):
     author = StringField('Nombre: ', validators=[DataRequired(message='No dejar vacío,completar')])

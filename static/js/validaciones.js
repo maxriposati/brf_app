@@ -499,3 +499,23 @@ if(val){
 }
 
 }
+
+function actualizar_evaluacion(id,anno,mes){
+    
+    var anoEvaluacion = document.getElementById('anoEvaluacion');
+    var mesEvaluacion = document.getElementById('mesEvaluacion');
+
+    if(anoEvaluacion.selectedIndex == null || anoEvaluacion.selectedIndex ==0 || anoEvaluacion.selectedIndex =="        ---"){
+        alert(" Seleccione el año para la busqueda");
+        return false;
+    }else{
+        if(mesEvaluacion.selectedIndex == null || mesEvaluacion.selectedIndex ==0 || mesEvaluacion.selectedIndex =="        ---"){
+            alert(" Seleccione el mes para la busqueda");
+            return false;
+        }else{
+            window.location.href='/mainadmin/evaluar/'+id+'/'+anno+'/'+mes;
+            return true  
+        }
+    }
+
+}

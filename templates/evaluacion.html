@@ -11,15 +11,22 @@
         
     <div id="tooplate_main">
         
-        <form action="/mainadmin/evaluar/{{id}}" method="POST" id="formevaluar" name="formevaluar"  novalidate>
+        <form action="/mainadmin/evaluar/{{id}}" method="POST" id="formevaluar" name="formevaluar">
             {{ form.hidden_tag() }} 
+            <input id="idperson" name="idperson" type="hidden" value="{{id}}"> 
             <p>
                 {{ form.anoEvaluacion.label(class="lblev") }}
                 {{ form.anoEvaluacion()}}<br>
 
                 {{ form.mesEvaluacion.label(class="lblev") }}
-                {{ form.mesEvaluacion(onChange="actualizar_evaluacion(editar.value,anoEvaluacion.value,mesEvaluacion.value)")}}<br>
-                    <br><br>
+                {{ form.mesEvaluacion(onChange="actualizar_evaluacion(idperson.value,anoEvaluacion.value,mesEvaluacion.value)")}}<br>
+                    <br>
+                    <section id="lblerror"class="content">
+                        {% for message in get_flashed_messages() %}
+                        <div class="flash">{{ message }}</div>
+                        {% endfor %}
+                      </section>
+                    
             </p>
             <div id="tooplate_content1">
                         <div class="col_w380 float_l"> <!--LADO IZQUIERDO-->
@@ -92,12 +99,12 @@
 
                             <div class="acciones"> 
                                                            
-                                <p> 
-                                    {{ form.guardar(class_="submit_btn") }}
+                                <p> {% if x=="Guardar" %}
+                                        {{ form.guardar(class_="submit_btn") }}
+                                    {% else %}
+                                        {{ form.editar(class_="submit_btn") }}
+                                    {% endif %}
                                     <br>
-                                    
-                                    {{ form.editar(class_="submit_btn",value=info[0]) }}
-                                    
                                     
                                     <div class="button">
                                         <a href="/mainadmin">Regresar</a>
@@ -114,4 +121,3 @@
    
     <div class="cleaner"></div>  
 {% endblock %}
-

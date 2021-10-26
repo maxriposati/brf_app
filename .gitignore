@@ -1,0 +1,14 @@
+#PARA IGNORAR
+#carpetas de sprints
+/1_Sprint_Entregables
+/2_Sprint_Entregables
+/4_Sprint_Entregables
+
+#ENVIROMENT
+/env
+
+#visual studio code
+/.vscode
+
+#pycache
+/__pycache__
