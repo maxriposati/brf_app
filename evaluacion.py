@@ -56,12 +56,12 @@ def evaluaciones_persona(id):
         close_db()
     close_db()
 
-def editar_evaluacion(idPersona,year,month,conocimiento,actitud,habilidad,puntaje,feedback):
+def editar_evaluacion(idPersona,year,month,conocimiento,actitud,habilidad,puntaje,feedback,idPerform):
     db=get_db()
     try:
         cursor = db.cursor()
-        strsql ="update performances SET knowledge=?,acttitude=?,skillfulness=?,finalScore=?,feedback=? where idPerson=? and year=? and month=?"
-        cursor.execute(strsql,[conocimiento,actitud,habilidad,puntaje,feedback,idPersona,year,month])
+        strsql ="update performances SET idPerson=?,year=?,month=?,knowledge=?,acttitude=?,skillfulness=?,finalScore=?,feedback=? where idPerformance=?"
+        cursor.execute(strsql,[idPersona,year,month,conocimiento,actitud,habilidad,puntaje,feedback,idPerform])
         db.commit()
         valor=True
         close_db()

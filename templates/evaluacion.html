@@ -10,8 +10,11 @@
     </div> <!-- end of middle_wrapper -->
         
     <div id="tooplate_main">
-        
-        <form action="/mainadmin/evaluar/{{id}}" method="POST" id="formevaluar" name="formevaluar">
+        {% if x=="Guardar" %}
+        <form action="/mainadmin/evaluar/{{id}}" method="post" id="formevaluar" name="formevaluar">
+        {% else %}
+        <form action="/mainadmin/evaluar/{{id}}/{{anno}}/{{mes}}" method="post" id="formevaluar" name="formevaluar">
+        {% endif %}
             {{ form.hidden_tag() }} 
             <input id="idperson" name="idperson" type="hidden" value="{{id}}"> 
             <p>
@@ -121,3 +124,4 @@
    
     <div class="cleaner"></div>  
 {% endblock %}
+

@@ -46,12 +46,42 @@ function validar_formulario(evento){
     
 }
 // LOGIN
+function validar_login() {
+    var formulario = document.getElementById("formLogin");
+    var user = document.getElementById('username');
+    var password = document.getElementById('password');
+    var politica = document.getElementById('politicas');
+  
+    if(user.value ==""){
+        alert("El campo Nombre está vacío");
+        user.focus();
+        return false;
+    }else{
+        if(password.value==""){
+            alert("El campo Password está vacío");
+            password.focus();
+            return false;
+        }else{
+            if(politica.checked==false){
+                alert(" Por favor Marque la opción de políticas")
+                return false;
+            }else{
+                alert("Enviando el formulario");
+                formulario.submit();
+                return true;
+            }
 
-document.addEventListener("DOMContentLoaded", function() {
-    document.getElementById("formLogin").addEventListener('submit', validar_login); 
+        }
+    }
+  }
+
+/*document.addEventListener("DOMContentLoaded", function() {
+    var formulario = document.getElementById("formLogin");
+    formulario.addEventListener('submit', validar_login); 
 });
 function validar_login(evento){
     evento.preventDefault();
+    var formulario = document.getElementById("formLogin");
     var user = document.getElementById('username');
     var password = document.getElementById('password');
     var politaca = document.getElementById('politicas');
@@ -72,8 +102,8 @@ function validar_login(evento){
             if(politaca.checked==false){
                 alert(" Por favor Marque la opción de políticas")
                 return false;
-        }
-           else if(user.value == "admin" ){
+            }
+          /* else if(user.value == "admin" ){
                window.location.href='/mainadmin';
                alert("Bienvenido Usuario Administrador..!");
                return true;
@@ -84,18 +114,33 @@ function validar_login(evento){
                 return true;
            }
 
-           else{ alert("Usuario no Registrado..!")
-           
-           return false;
-        }
+           else{ 
+               //alert("Usuario no Registrado..!")
+               //return false;
+               formulario.submit();
+               return true;
+            }
 
        }
     }
-}
+}*/
 
 //OLVIDO DE CONTRASENA
+function validar_Olvido() {
+    var formulario = document.getElementById("formRecuperarPass");
+    var user =document.getElementById('username');
+    if(user.value ==""){
+        alert("El campo usuario está vacío");
+        user.focus();
+        return false;
+    }else{
+        alert("Enviando para recuperación");
+        formulario.submit();
+        return true;
+    }
+  }
 
-document.addEventListener("DOMContentLoaded", function() {
+/*document.addEventListener("DOMContentLoaded", function() {
     document.getElementById("tooplate_content1").addEventListener('submit', validar_Olvido); 
 });
 function validar_Olvido(evento){
@@ -109,14 +154,14 @@ function validar_Olvido(evento){
             return false;
         }
        
-    }
+    }*/
     
-//MAIN ADMINISTRADOR
-function eliminarUsuario(val){
-    val=confirm("¿Está seguro que desea Eliminar el Usuario "+val+" ?")
+//Eliminar
+function eliminarUsuario(valor){
+    val=confirm("¿Está seguro que desea Eliminar este Usuario ?")
     if (val) {
-        window.location.href='/mainadmin';
-        alert("Usuario Eliminado..!");
+        window.location.href='/mainadmin/eliminar/'+valor;
+        alert("Usuario Eliminado Exitosamente")
         return true   
     }else{
         return false
@@ -130,6 +175,7 @@ document.addEventListener("DOMContentLoaded", function() {
     document.getElementById("formcrearusuario").addEventListener('submit', crearUsuario); 
 });
 function crearUsuario(evento){
+    
     evento.preventDefault();
     var documento = document.formcrearusuario.documento.value
     var nombre = document.formcrearusuario.nombre.value
@@ -268,9 +314,48 @@ if(fechaInicio==""){
     return false;
 }
 
+function validar_fecha(){
+    fechaHoy=""
+    if(fechaInicio < fechaHoy ){
+        alert("la fecha de inicio no puede ser anterior a la fecha actual");
+        return false
+    }
+    if(fechaFinalizacion <= fechaHoy || fechaFinalizacion <= fechaInicio){
+        alert("la fecha de finalizacion no puede ser igual a la fecha de inicio o anterior a la fecha actual");
+        return false
+    }
+}
+
+function validar_nac(){
+    fechaHoy=""
+    if(fechaNacimiento >=  fechaHoy ){
+        alert("la fecha de inicio no puede ser anterior a la fecha actual");
+        return false
+    }
+   //comparar la fecha actual menos 18 annos 
+}
+
+
+///////////////////////////////
+let date = new Date()
+
+let day = date.getDate()
+let month = date.getMonth() + 1
+let year = date.getFullYear()
+
+if(month < 10){
+  console.log(`${day}-0${month}-${year}`)
+}else{
+  console.log(`${day}-${month}-${year}`)
+}
+
+
+/////////////////////
+
 val=confirm("¿Está Seguro que desea Crear el Usuario?")
 if(val){
-    window.location.href='/mainadmin';
+    this.submit();
+    //window.location.href='/mainadmin';
     alert("Usuario creado..!");
     return true
 }else{
@@ -282,6 +367,7 @@ if(val){
 
 // EVALUAR
 
+/*
 document.addEventListener("DOMContentLoaded", function() {
     document.getElementById("formevaluar").addEventListener('submit', Evaluar); 
 });
@@ -345,14 +431,51 @@ function Evaluar(evento){
     }
   
     }
+*/
+
+function puntaje_final(){
+    
+    var conocimiento = document.getElementById('conocimiento').value
+    var actitud = document.getElementById('actitud').value
+    var habilidad = document.getElementById('habilidad').value
+    var puntaje = document.getElementById('puntaje')
+    var suma=(parseInt(conocimiento) + parseInt(actitud)+parseInt(habilidad))/3
+    
+    puntaje.value=suma.toFixed(2)
+
+}
+
+function actualizar_evaluacion(id,anno,mes){
+    
+    var anoEvaluacion = document.getElementById('anoEvaluacion');
+    var mesEvaluacion = document.getElementById('mesEvaluacion');
+
+    if(anoEvaluacion.selectedIndex == null || anoEvaluacion.selectedIndex ==0 || anoEvaluacion.selectedIndex =="        ---"){
+        alert(" Seleccione el año para la busqueda");
+        return false;
+    }else{
+        if(mesEvaluacion.selectedIndex == null || mesEvaluacion.selectedIndex ==0 || mesEvaluacion.selectedIndex =="        ---"){
+            alert(" Seleccione el mes para la busqueda");
+            return false;
+        }else{
+            window.location.href='/mainadmin/evaluar/'+id+'/'+anno+'/'+mes;
+            return true  
+        }
+    }
+
+}
+
 
 //EDITAR USUARIOS
+
+/*
 
 document.addEventListener("DOMContentLoaded", function() {
     document.getElementById("formeditarusuario" ).addEventListener('submit', EditarUsuario); 
 });
 function EditarUsuario(evento){
     evento.preventDefault();
+    var formulario = document.getElementById("formeditarusuario");
     var documento = document.formeditarusuario.documento.value
     var nombre = document.formeditarusuario.nombre.value
     var apellidos = document.formeditarusuario.apellidos.value
@@ -360,10 +483,7 @@ function EditarUsuario(evento){
     var fechaNacimiento = document.getElementById('documento')
     var ciudadNacimiento = document.getElementById('ciudadNacimiento').selectedIndex
     
-    var user = document.getElementById('user').value
-    var password = document.getElementById('password')
-    var rol = document.getElementById('rol')
-   
+
     var telefono = document.getElementById('telefono').value
     var direccion = document.getElementById('direccion').value
     var ciudadResidencia = document.getElementById('ciudadResidencia').selectedIndex
@@ -410,16 +530,7 @@ if(ciudadNacimiento == null || ciudadNacimiento ==0){
     return false
 }
 
-if(user.length == 0) {
-    alert("El campo Usuario está vacío")
-    user.focus();
-    return false;
-}
-if(password.value==""){
-    alert("El campo Password está vacío");
-    password.focus();
-    return false;
-}
+
 
 if(email.length == 0) {
     alert('No ha escrito el Correo. Es un campo obligatorio..!');
@@ -491,31 +602,11 @@ if(fechaInicio==""){
 
 val=confirm("¿Está seguro que desea Editar el usuario?")
 if(val){
-    window.location.href='/mainadmin';
+    //window.location.href='/mainadmin';
     alert("Usuario editado..!");
     return true
 }else{
     return false
 }
 
-}
-
-function actualizar_evaluacion(id,anno,mes){
-    
-    var anoEvaluacion = document.getElementById('anoEvaluacion');
-    var mesEvaluacion = document.getElementById('mesEvaluacion');
-
-    if(anoEvaluacion.selectedIndex == null || anoEvaluacion.selectedIndex ==0 || anoEvaluacion.selectedIndex =="        ---"){
-        alert(" Seleccione el año para la busqueda");
-        return false;
-    }else{
-        if(mesEvaluacion.selectedIndex == null || mesEvaluacion.selectedIndex ==0 || mesEvaluacion.selectedIndex =="        ---"){
-            alert(" Seleccione el mes para la busqueda");
-            return false;
-        }else{
-            window.location.href='/mainadmin/evaluar/'+id+'/'+anno+'/'+mes;
-            return true  
-        }
-    }
-
-}
+} */
