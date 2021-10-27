@@ -14,7 +14,7 @@
         
         <div id="tooplate_content1">
         
-            <form action="" method="POST" name="formRecovery" onSubmit="">
+            <form action="" method="POST" name="formRecovery" onsubmit="return validar_recovery();">
                 {{ form.hidden_tag() }}
                 <p>
                     {{ form.password.label }}<br>

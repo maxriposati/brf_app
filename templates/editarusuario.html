@@ -12,7 +12,7 @@
 
   <div id="tooplate_main">
     
-    <form method="POST"  action="/mainadmin/editar/{{id}}" id="formeditarusuario" name="formeditarusuario" novalidate>
+    <form method="POST"  action="{{url_for('editar',id=id)}}" id="formeditarusuario" name="formeditarusuario" onsubmit="return validar_editar_usuario();">
       {{ form.hidden_tag() }}
       <div id="tooplate_content1">
         <div class="col_w380 float_l">

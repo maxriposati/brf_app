@@ -13,7 +13,7 @@
 
   <div id="tooplate_main">
     
-    <form method="post"  action="/mainadmin/crear" id="formcrearusuario" name="formcrearusuario" onSubmit="">
+    <form method="post"  action="{{url_for('crear')}}" id="formcrearusuario" name="formcrearusuario" onsubmit="return validar_crear_usuario();">
       {{ form.hidden_tag() }}
       <div id="tooplate_content1">
         <div class="col_w380 float_l">

@@ -28,7 +28,7 @@
             
             <div class="button float_r" id="header_button">
               {% print(session["usuario"])%}({% print(session["rol"])%})
-              <a href="/logout">Logout</a>
+              <a href="{{url_for('logout')}}">Logout</a>
                 
             </div>
             
