@@ -12,7 +12,7 @@
 
   <div id="tooplate_main">
     
-    <form method="post" action="/mainusuario/{{id}}" name="formUsuario" >
+    <form method="post" action="{{url_for('usuario',id=id)}}" name="formUsuarioFinal" onsubmit="return validar_fechas_usuario();">
       {{ form.hidden_tag() }}
       <div id="tooplate_content1">
         <div class="col_w380 float_l">
@@ -67,10 +67,7 @@
         
           
         <div class="col_w430 float_r">
-          <p align="center">
-            {{ form.contrato.label }}
-            {{ form.contrato()}}
-          </p>
+          
           <div class="contrato">
             <h3>Datos de Contrato</h3>
             <p>
@@ -149,7 +146,7 @@
           
           <div class="acciones">
             <div class="button">
-              <a href="/login">Regresar</a>
+              <a href="{{url_for('logout')}}">Regresar</a>
             </div>
           </div>
     

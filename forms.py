@@ -86,7 +86,7 @@ class FormRetroalimentacion(FlaskForm):
     apellidos = StringField('Apellidos: ')
     #retroalimentacion
     puntaje = DecimalField('Puntaje Final: ')
-    retroalimentacion = TextAreaField('Comentarios: ')
+    retroalimentacion = TextAreaField('Comentarios: ', validators=[DataRequired(message='No dejar vacío,completar')])
     #calificacion
     conocimiento = IntegerRangeField('Conocimiento: ')
     actitud = IntegerRangeField('Actitud: ')

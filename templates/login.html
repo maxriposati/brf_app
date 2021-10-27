@@ -32,7 +32,7 @@
                                 <p id="leyenda-login"><em>Desde esta plataforma los empleados pueden tener acceso a su información personal asi como a su evaluación mensual según sus áreas de especialización; permite un punto de encuentro entre la información y un modo digital para distribuirla.</em></p>
                                 
         
-                                <form action="/login" id="formLogin" method="POST" name="formRegistro" onsubmit="return validar_login();">
+                                <form action="{{url_for('login')}}" id="formLogin" method="POST" name="formRegistro" onsubmit="return validar_login();">
                                     {{ form.hidden_tag() }}
                                     <p>
                                         {{ form.username.label }}<br>
@@ -51,7 +51,7 @@
                                     <p id="lblpoliticas">
                                         {{ form.politicas()}}
                                         {{ form.politicas.label }}
-                                        <a href="/politicas">Leer Políticas</a><br>
+                                        <a href="{{url_for('politicas')}}">Leer Políticas</a><br>
                                     </p>
         
                                     <p>
@@ -60,7 +60,7 @@
         
                                 </form><br><br><br>
                                 
-                                <a href="/recuperarpass">¿Olvidaste tu contraseña?</a><br>
+                                <a href="{{url_for('recuperar')}}">¿Olvidaste tu contraseña?</a><br>
                                 
         
                             </div>

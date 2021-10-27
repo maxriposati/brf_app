@@ -9,9 +9,9 @@ from evaluacion import consultar_evaluacion, evaluaciones_persona, eliminar_eval
 
 import yagmail as yagmail
 import os
-from db import get_db
-from _sqlite3 import Error
-from datetime import datetime
+from os.path import abspath, dirname, join
+# Define the application directory
+BASE_DIR = dirname(dirname(abspath(__file__)))
 
 app = Flask(__name__)
 
@@ -231,10 +231,9 @@ def evaluar(id):
         #calificacion
         conocimiento = request.form['conocimiento']
         actitud = request.form['actitud']
-        habilidad = request.form['habilidad']  
-
+        habilidad = request.form['habilidad'] 
+        
         valor=insertar_evaluacion(id,anoEvaluacion,mesEvaluacion,conocimiento,actitud,habilidad, puntaje,retroalimentacion )
-
         if valor==True:        
             return redirect("/mainadmin")
     
@@ -261,7 +260,8 @@ def edit_evaluar(id,anno,mes):
         #calificacion
         conocimiento = request.form['conocimiento']
         actitud = request.form['actitud']
-        habilidad = request.form['habilidad']  
+        habilidad = request.form['habilidad'] 
+         
         edicion=editar_evaluacion(id,anoEvaluacion,mesEvaluacion,conocimiento,actitud,habilidad,puntaje,retroalimentacion,ideval )
         if edicion==True:       
             return redirect("/mainadmin")

@@ -30,58 +30,58 @@
                 
                 <div id="tooplate_menu">
                     
-                    <div id="home_menu"><a href="/home"></a></div>
+                    <div id="home_menu"><a href="{{url_for('index')}}"></a></div>
                         
                     <ul>
                         {% if titulo=="home" %}
                         <li><a href="#" class="current">Home</a></li>
-                        <li><a href="/mision">Misión</a></li>
-                        <li><a href="/vision">Visión</a></li>
-                        <li><a href="/servicios">Servicios</a></li>
-                        <li><a href="/contacto">Contáctanos</a></li>
-                        <li><a href="/login">Login</a></li>
+                        <li><a href="{{url_for('mision')}}">Misión</a></li>
+                        <li><a href="{{url_for('vision')}}">Visión</a></li>
+                        <li><a href="{{url_for('servicios')}}">Servicios</a></li>
+                        <li><a href="{{url_for('contacto')}}">Contáctanos</a></li>
+                        <li><a href="{{url_for('login')}}">Login</a></li>
                         {% elif titulo=="mision"%}
-                        <li><a href="/" >Home</a></li>
+                        <li><a href="{{url_for('index')}}" >Home</a></li>
                         <li><a href="#" class="current">Misión</a></li>
-                        <li><a href="/vision">Visión</a></li>
-                        <li><a href="/servicios">Servicios</a></li>
-                        <li><a href="/contacto">Contáctanos</a></li>
-                        <li><a href="/login">Login</a></li>
+                        <li><a href="{{url_for('vision')}}">Visión</a></li>
+                        <li><a href="{{url_for('servicios')}}">Servicios</a></li>
+                        <li><a href="{{url_for('contacto')}}">Contáctanos</a></li>
+                        <li><a href="{{url_for('login')}}">Login</a></li>
                         {% elif titulo=="vision"%}
-                        <li><a href="/" >Home</a></li>
-                        <li><a href="/mision">Misión</a></li>
+                        <li><a href="{{url_for('index')}}" >Home</a></li>
+                        <li><a href="{{url_for('mision')}}">Misión</a></li>
                         <li><a href="#" class="current">Visión</a></li>
-                        <li><a href="/servicios">Servicios</a></li>
-                        <li><a href="/contacto">Contáctanos</a></li>
-                        <li><a href="/login">Login</a></li>
+                        <li><a href="{{url_for('servicios')}}">Servicios</a></li>
+                        <li><a href="{{url_for('contacto')}}">Contáctanos</a></li>
+                        <li><a href="{{url_for('login')}}">Login</a></li>
                         {% elif titulo=="servicios"%}
-                        <li><a href="/" >Home</a></li>
-                        <li><a href="/mision">Misión</a></li>
-                        <li><a href="/vision" >Visión</a></li>
+                        <li><a href="{{url_for('index')}}" >Home</a></li>
+                        <li><a href="{{url_for('mision')}}">Misión</a></li>
+                        <li><a href="{{url_for('vision')}}">Visión</a></li>
                         <li><a href="#" class="current">Servicios</a></li>
-                        <li><a href="/contacto">Contáctanos</a></li>
-                        <li><a href="/login">Login</a></li>
+                        <li><a href="{{url_for('contacto')}}">Contáctanos</a></li>
+                        <li><a href="{{url_for('login')}}">Login</a></li>
                         {% elif titulo=="contacto"%}
-                        <li><a href="/" >Home</a></li>
-                        <li><a href="/mision">Misión</a></li>
-                        <li><a href="/vision" >Visión</a></li>
-                        <li><a href="/servicios">Servicios</a></li>
+                        <li><a href="{{url_for('index')}}" >Home</a></li>
+                        <li><a href="{{url_for('mision')}}">Misión</a></li>
+                        <li><a href="{{url_for('vision')}}">Visión</a></li>
+                        <li><a href="{{url_for('servicios')}}">Servicios</a></li>
                         <li><a href="#" class="current">Contáctanos</a></li>
-                        <li><a href="/login">Login</a></li>
+                        <li><a href="{{url_for('login')}}">Login</a></li>
                         {% elif titulo=="login"%}
-                        <li><a href="/" >Home</a></li>
-                        <li><a href="/mision">Misión</a></li>
-                        <li><a href="/vision">Visión</a></li>
-                        <li><a href="/servicios">Servicios</a></li>
-                        <li><a href="/contacto">Contáctanos</a></li>
+                        <li><a href="{{url_for('index')}}" >Home</a></li>
+                        <li><a href="{{url_for('mision')}}">Misión</a></li>
+                        <li><a href="{{url_for('vision')}}">Visión</a></li>
+                        <li><a href="{{url_for('servicios')}}">Servicios</a></li>
+                        <li><a href="{{url_for('contacto')}}">Contáctanos</a></li>
                         <li><a href="#" class="current">Login</a></li>
                         {% else %}
-                        <li><a href="/">Home</a></li>
-                        <li><a href="/mision">Misión</a></li>
-                        <li><a href="/vision">Visión</a></li>
-                        <li><a href="/servicios">Servicios</a></li>
-                        <li><a href="/contacto">Contáctanos</a></li>
-                        <li><a href="/login">Login</a></li>
+                        <li><a href="{{url_for('index')}}" >Home</a></li>
+                        <li><a href="{{url_for('mision')}}">Misión</a></li>
+                        <li><a href="{{url_for('vision')}}">Visión</a></li>
+                        <li><a href="{{url_for('servicios')}}">Servicios</a></li>
+                        <li><a href="{{url_for('contacto')}}">Contáctanos</a></li>
+                        <li><a href="{{url_for('login')}}">Login</a></li>
                         {% endif %}
                     </ul>    	
                 

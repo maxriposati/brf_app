@@ -1,6 +1,7 @@
 {% extends "apptemplate.html" %}
 {% block contenido %}
 
+
     <div id="tooplate_middle_wrapper3">
             <div id="tooplate_middle_wrapper4">
                 <div id="tooplate_middle1">        
@@ -11,9 +12,9 @@
         
     <div id="tooplate_main">
         {% if x=="Guardar" %}
-        <form action="/mainadmin/evaluar/{{id}}" method="post" id="formevaluar" name="formevaluar">
+        <form action="{{url_for('evaluar',id=id)}}" method="post" id="formevaluar" name="formevaluar" onsubmit="return validar_evaluacion();">
         {% else %}
-        <form action="/mainadmin/evaluar/{{id}}/{{anno}}/{{mes}}" method="post" id="formevaluar" name="formevaluar">
+        <form action="{{url_for('edit_evaluar',id=id,anno=anno,mes=mes)}}" method="post" id="formevaluar" name="formevaluar" onsubmit="return validar_evaluacion();">
         {% endif %}
             {{ form.hidden_tag() }} 
             <input id="idperson" name="idperson" type="hidden" value="{{id}}"> 
