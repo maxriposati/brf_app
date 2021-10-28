@@ -1,50 +1,43 @@
-// validacion CONTACTO
-
-document.addEventListener("DOMContentLoaded", function() {
-    document.getElementById("contact_form").addEventListener('submit', validar_formulario); 
-});
-
-function validar_formulario(evento){
-    evento.preventDefault();
+// Validacion contacto
+function validar_contacto() {
     var nombre = document.getElementById('author').value;
     var mail = document.getElementById('email').value;
     var asunto = document.getElementById('subject').value;
     var mensaje = document.getElementById('mensaje').value;
-
-    if(nombre.length == 0) {
+  
+    if(nombre.length == 0){
         alert('No has escrito el Nombre. Es un campo obligatorio..!');
-        return;
+        nombre.focus();
+        return false;
+    }else{
+        if(mail.length == 0){
+            alert('No has escrito el Correo. Es un campo obligatorio..!');
+            mail.focus();
+            return false;
+        }else{
+            if(asunto.length == 0) {
+                alert('No has escrito el Asunto. Es un campo obligatorio..!');
+                return;
+            }else{
+                if(mensaje.length == 0) {
+                    alert(" Por favor Marque la opción de políticas")
+                    return false;
+                }else{
+                    re=/^\w+([\.-]?\w+)@\w+([\.-]?\w+)(\.\w{2,3})+$/
+                    if(!re.exec(mail)){
+                        alert('Debe ingresar un Email válido!');
+                        mail.focus();
+                        return false; 
+	                }else{
+                        alert("Gracias por contactarnos...");
+                        formulario.submit();
+                        return true;
+                    } 
+                }
+            }  
+        }
     }
-
-    if(mail.length == 0) {
-        alert('No has escrito el Correo. Es un campo obligatorio..!');
-        return;
-    }
-
-    if(asunto.length == 0) {
-        alert('No has escrito el Asunto. Es un campo obligatorio..!');
-        return;
-    }
-
-    if(mensaje.length == 0) {
-        alert('No has escrito ningún Mensaje para Contactarte. Es un campo obligatorio..!');
-        return;
-    }
-
-    re=/^\w+([\.-]?\w+)@\w+([\.-]?\w+)(\.\w{2,3})+$/
-	if(!re.exec(mail)){
-		alert('Debe ingresar un Email válido!');
-        mail.focus();
-        return false; 
-	}
-    alert('El mensaje se ha enviado Exitosamente..!');
-    document.getElementById('author').value=""
-    document.getElementById('email').value=""
-    document.getElementById('subject').value=""
-    document.getElementById('mensaje').value=""
-    this.reset();
-    
-}
+  }
 // Validacion LOGIN
 function validar_login() {
     var formulario = document.getElementById("formLogin");

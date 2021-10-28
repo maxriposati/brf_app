@@ -54,7 +54,7 @@
                 <div id="contact_form">
                 
                     <h4>Formulario de Contacto</h4>
-                        <form method="post" name="contact" action="#" novalidate>
+                        <form method="post" name="contact" id="contact" action="{{url_for('contacto')}}" onsubmit="return validar_contacto();">
                             {{ form.hidden_tag() }}
 
                             {{ form.author.label }}
@@ -83,7 +83,7 @@
         
             <div id="tooplate_sidebar">
             
-                <div class="button"><a href="/home">Home</a></div>
+                <div class="button"><a href="{{url_for('index')}}">Home</a></div>
                 
                 <div class="cleaner_h60"></div>
                 

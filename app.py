@@ -46,7 +46,16 @@ def servicios():
 @app.route('/contacto', methods=["GET","POST"])
 def contacto():
     formcontacto = FormContacto()
-    return render_template('contacto.html', titulo="contacto", form=formcontacto)
+    if request.method == 'POST':
+        name = request.form['author']
+        email=request.form['email']
+        msubject = request.form['subject']
+        mensaje = request.form['mensaje']
+        yag = yagmail.SMTP('brf.noreply@gmail.com', 'Uninorte43!')
+        yag.send(to='brf.noreply@gmail.com', subject=msubject, contents= "From: "+name+", Mail:"+email+".\n"+mensaje)
+        return redirect("/login")
+    else:
+        return render_template('contacto.html', titulo="contacto", form=formcontacto)
 
 @app.route('/politicas')
 def politicas():
